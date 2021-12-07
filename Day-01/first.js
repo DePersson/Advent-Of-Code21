@@ -1,6 +1,17 @@
 const fs = require ('fs');
 
 // Read file
-var measurments = fs.readFileSync('input.txt', 'utf8').split('/n');
+const data = fs.readFileSync('input.txt', 'utf-8')
+	.trim()
+	.split('\n')
+	.map((line) => Number(line));
 
-// Loop array and count the number of times it increases
+let counter = 0;
+
+for (var i =1; i <= data.length-1; i++) {
+	if(data[i]>data[i-1]){
+		counter = counter + 1;
+	}
+}
+
+console.log("Counter: ", counter);
